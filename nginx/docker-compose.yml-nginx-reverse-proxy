@@ -1,0 +1,23 @@
+version: '3'
+services:
+  nginx-proxy:
+    image: nginx:latest
+    container_name: nginx-proxy
+    ports:
+      - 8082:80
+    volumes: 
+      - $PWD/nginx-proxy-htdocs:/usr/share/nginx/html
+    networks:
+      - net
+  nginx-app:
+    image: nginx:latest
+    container_name: nginx-app
+    ports:
+      - 8083:80
+    volumes: 
+      - $PWD/nginx-app-htdocs:/usr/share/nginx/html
+    networks:
+      - net
+networks:
+  net:      
+
